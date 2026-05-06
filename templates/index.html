@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formulario Nombre y Apellido</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    form { margin-bottom: 1.5rem; }
+    input[type="text"] { padding: 0.5rem; margin-right: 0.5rem; width: 200px; }
+    button { padding: 0.5rem 1rem; }
+    .entry { margin: 0.25rem 0; }
+    .list { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Enviar Nombre y Apellido</h1>
+  <form method="post" action="/submit">
+    <input type="text" name="first_name" placeholder="Nombre" required />
+    <input type="text" name="last_name" placeholder="Apellido" required />
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div class="list">
+    <h2>Envíos recientes</h2>
+    {% if persons %}
+      {% for p in persons %}
+        <div class="entry">{{ p.first_name }} {{ p.last_name }}</div>
+      {% endfor %}
+    {% else %}
+      <div>No hay envíos aún.</div>
+    {% endif %}
+  </div>
+</body>
+</html>
